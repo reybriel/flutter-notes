@@ -23,7 +23,7 @@ class _NotesListState extends State<NotesListPage> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
-            onPressed: () => _addNewNote(),
+            onPressed: _addNewNote,
           )
         ],
       ),
