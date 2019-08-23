@@ -12,7 +12,7 @@ class _NotesListState extends State<NotesListPage> {
   final String _pageTitle;
   List<NoteViewModel> _notes = NoteViewModel.mock();
 
-  _NotesListState(String pageTitle): this._pageTitle = pageTitle;
+  _NotesListState(this._pageTitle);
 
   void _addNewNote() => setState(() {
     });
