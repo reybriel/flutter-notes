@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'scenes/notes_list/notes_list_page.dart';
+import 'package:my_notes/scenes/notes_list/notes_list_page.dart';
 
 void main() => runApp(MyNotes());
 

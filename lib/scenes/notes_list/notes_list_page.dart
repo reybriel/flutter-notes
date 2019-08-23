@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_notes/scenes/notes_list/note_list_row.dart';
-import '../../model/note_view_model.dart';
+import 'package:my_notes/model/note_view_model.dart';
 
 class NotesListPage extends StatefulWidget {
   
