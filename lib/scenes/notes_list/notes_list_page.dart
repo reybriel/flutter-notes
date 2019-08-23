@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_notes/scenes/notes_list/note_list_row.dart';
+import '../../model/note_view_model.dart';
 
 class NotesListPage extends StatefulWidget {
   
@@ -8,12 +10,11 @@ class NotesListPage extends StatefulWidget {
 
 class _NotesListState extends State<NotesListPage> {
   final String _pageTitle;
-  int _count = 0;
+  List<NoteViewModel> _notes = NoteViewModel.mock();
 
   _NotesListState(String pageTitle): this._pageTitle = pageTitle;
 
   void _addNewNote() => setState(() {
-      _count++;
     });
 
   @override
@@ -27,8 +28,10 @@ class _NotesListState extends State<NotesListPage> {
           )
         ],
       ),
-      body: Center(
-        child: Text('Hello, Note # $_count!'),
+      body: ListView(
+        children: _notes.map((noteViewModel) {
+          return NoteListRow(noteViewModel);
+        }).toList(),
       ),
     );
 }
