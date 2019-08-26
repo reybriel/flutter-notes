@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_notes/scenes/notes_list/note_list_row.dart';
 import 'package:my_notes/model/note_view_model.dart';
 
 class NotesListPage extends StatefulWidget {
@@ -22,7 +21,16 @@ class _NotesListState extends State<NotesListPage> {
   Widget _itemBuilder(BuildContext context, int i) {
     if (i.isOdd) return Divider();
     final index = i ~/ 2;
-    return NoteListRow(_notes[index]); 
+    final note = _notes[index];
+    return ListTile(
+      title: Text(note.title),
+      subtitle: Text(note.content),
+      onTap: () => _onTapInListItemAt(index),
+    );
+  }
+
+  void _onTapInListItemAt(int index) {
+    print(index);
   }
 
   @override
