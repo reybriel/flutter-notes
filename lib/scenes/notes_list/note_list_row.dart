@@ -8,8 +8,7 @@ class NoteListRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Row(
+    return Row(
         children: [
           Padding(
             padding: EdgeInsets.all(10),
@@ -21,7 +20,7 @@ class NoteListRow extends StatelessWidget {
                   child: Text(
                     _noteViewModel.title,
                     style: TextStyle(
-                      color: Colors.lightGreen.withAlpha(150),
+                      color: Colors.green,
                       fontSize: 20,
                       fontWeight: FontWeight.bold
                       ),
@@ -38,7 +37,6 @@ class NoteListRow extends StatelessWidget {
               ),
             ),
           ],
-        )
       );
   }
 }
