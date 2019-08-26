@@ -12,10 +12,18 @@ class _NotesListState extends State<NotesListPage> {
   final String _pageTitle;
   List<NoteViewModel> _notes = NoteViewModel.mock();
 
+  int get _listLength => _notes.length * 2;
+
   _NotesListState(this._pageTitle);
 
   void _addNewNote() => setState(() {
     });
+
+  Widget _itemBuilder(BuildContext context, int i) {
+    if (i.isOdd) return Divider();
+    final index = i ~/ 2;
+    return NoteListRow(_notes[index]); 
+  }
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -28,10 +36,10 @@ class _NotesListState extends State<NotesListPage> {
           )
         ],
       ),
-      body: ListView(
-        children: _notes.map((noteViewModel) {
-          return NoteListRow(noteViewModel);
-        }).toList(),
+      body: ListView.builder(
+        padding: EdgeInsets.all(10),
+        itemCount: _listLength,
+        itemBuilder: _itemBuilder,
       ),
     );
 }
