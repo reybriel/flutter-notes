@@ -15,8 +15,9 @@ class _NotesListState extends State<NotesListPage> {
 
   _NotesListState(this._pageTitle);
 
-  void _addNewNote() => setState(() {
-    });
+  void _addNewNote() {
+    
+  }
 
   Widget _itemBuilder(BuildContext context, int i) {
     if (i.isOdd) return Divider();
