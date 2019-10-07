@@ -10,7 +10,7 @@ class MyNotes extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         brightness: Brightness.light,
-        primaryColor: Colors.green,
+        primaryColor: Colors.deepOrange,
       ),
       home: NotesListView(),
     );
