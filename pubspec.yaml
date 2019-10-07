@@ -28,6 +28,8 @@ dependencies:
 
   path: ^1.6.4
 
+  rxdart: ^0.22.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

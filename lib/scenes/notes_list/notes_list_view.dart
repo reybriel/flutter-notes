@@ -1,5 +1,4 @@
 import 'dart:collection';
-
 import 'package:flutter/material.dart';
 import 'package:my_notes/common/view/empty_list_feedback.dart';
 import 'package:my_notes/common/view/loading_feedback.dart';
@@ -36,7 +35,7 @@ class _NotesListState extends State<NotesListView> with LoadingFeedback, EmptyLi
       body: StreamBuilder(
         stream: widget.bloc.viewState,
         builder: (BuildContext context, AsyncSnapshot<NoteListViewState> snapshot) {
-          if (snapshot.data.isLoading) {
+          if (!snapshot.hasData || snapshot.data.isLoading) {
             return buildLoading();
           } else if (snapshot.data.isEmpty) {
             return buildEmptyList();

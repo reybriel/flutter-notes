@@ -2,14 +2,14 @@ import 'dart:async';
 import 'dart:collection';
 import 'package:my_notes/model/note_view_model.dart';
 import 'package:my_notes/common/database/notes_dao.dart' as NotesDAO;
+import 'package:rxdart/subjects.dart';
 
 class NotesListBloc {
-  StreamController<NoteListViewState> _viewStateController;
-  Sink<NoteListViewState> get _viewStateSink => _viewStateController.sink;
-  Stream<NoteListViewState> get viewState => _viewStateController.stream;
+  final BehaviorSubject<NoteListViewState> _viewStateSubject = BehaviorSubject();
+  Sink<NoteListViewState> get _viewStateSink => _viewStateSubject.sink;
+  Stream<NoteListViewState> get viewState => _viewStateSubject.stream;
 
   initialize() {
-    _viewStateController = StreamController();
     _viewStateSink.add(NoteListViewState.loading);
     _requestNotes();
   }
@@ -17,15 +17,15 @@ class NotesListBloc {
   _requestNotes() async {
     final notes = await NotesDAO.retrieveAll();
     if (notes.isEmpty) {
-      _viewStateController.add(NoteListViewState.empty);
+      _viewStateSubject.add(NoteListViewState.empty);
     } else {
       final viewModels = NoteViewModel.fromNotes(notes);
-      _viewStateController.add(NoteListViewState.some(viewModels));
+      _viewStateSubject.add(NoteListViewState.some(viewModels));
     }
   }
 
   dispose() {
-    _viewStateController.close();
+    _viewStateSubject.close();
   }
 
   onTapPlusButton() {
