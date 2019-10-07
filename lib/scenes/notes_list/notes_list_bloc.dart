@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:collection';
 import 'package:my_notes/model/note_view_model.dart';
+import 'package:my_notes/common/database/notes_dao.dart' as NotesDAO;
 
 class NotesListBloc {
   StreamController<NoteListViewState> _viewStateController;
@@ -14,9 +15,13 @@ class NotesListBloc {
   }
 
   _requestNotes() async {
-    await Future.delayed(Duration(seconds: 2), () {
+    final notes = await NotesDAO.retrieveAll();
+    if (notes.isEmpty) {
       _viewStateController.add(NoteListViewState.empty);
-    });
+    } else {
+      final viewModels = NoteViewModel.fromNotes(notes);
+      _viewStateController.add(NoteListViewState.some(viewModels));
+    }
   }
 
   dispose() {
@@ -42,4 +47,8 @@ class NoteListViewState {
   static final loading = NoteListViewState(false, true, UnmodifiableListView([]));
   static final empty = NoteListViewState(true, false, UnmodifiableListView([]));
   static final mock = NoteListViewState(false, false, UnmodifiableListView(NoteViewModel.mock()));
+
+  static NoteListViewState some(UnmodifiableListView<NoteViewModel> notes) {
+    return NoteListViewState(false, false, notes);
+  }
 }
