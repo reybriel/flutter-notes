@@ -1,8 +1,8 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
-import 'package:my_notes/common/empty_list_feedback.dart';
-import 'package:my_notes/common/loading_feedback.dart';
+import 'package:my_notes/common/view/empty_list_feedback.dart';
+import 'package:my_notes/common/view/loading_feedback.dart';
 import 'package:my_notes/model/note_view_model.dart';
 import 'package:my_notes/scenes/notes_list/notes_list_bloc.dart';
 
