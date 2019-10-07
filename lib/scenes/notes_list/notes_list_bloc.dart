@@ -46,7 +46,6 @@ class NoteListViewState {
 
   static final loading = NoteListViewState(false, true, UnmodifiableListView([]));
   static final empty = NoteListViewState(true, false, UnmodifiableListView([]));
-  static final mock = NoteListViewState(false, false, UnmodifiableListView(NoteViewModel.mock()));
 
   static NoteListViewState some(UnmodifiableListView<NoteViewModel> notes) {
     return NoteListViewState(false, false, notes);

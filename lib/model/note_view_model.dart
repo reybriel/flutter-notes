@@ -6,13 +6,6 @@ class NoteViewModel {
   
   NoteViewModel(this.title, this.content);
 
-  static List<NoteViewModel> mock() {
-    return [
-      NoteViewModel('Chocolate cake', 'recipy'),
-      NoteViewModel('Shopping list', 'content')
-    ];
-  }
-
   static List<NoteViewModel> fromNotes(List<Note> notes) {
     return notes.map(fromNote);
   }
