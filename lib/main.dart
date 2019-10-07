@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_notes/scenes/notes_list/notes_list_page.dart';
+import 'package:my_notes/scenes/notes_list/notes_list_view.dart';
 
 void main() => runApp(MyNotes());
 
@@ -12,7 +12,7 @@ class MyNotes extends StatelessWidget {
         brightness: Brightness.light,
         primaryColor: Colors.green,
       ),
-      home: NotesListPage(),
+      home: NotesListView(),
     );
   }
 }
