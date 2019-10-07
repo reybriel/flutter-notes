@@ -1,8 +1,8 @@
 import 'dart:async';
-import 'dart:collection';
-import 'package:my_notes/model/note_view_model.dart';
-import 'package:my_notes/common/database/notes_dao.dart' as NotesDAO;
 import 'package:rxdart/subjects.dart';
+import 'package:my_notes/model/note_view_model.dart';
+import 'package:my_notes/scenes/notes_list/notes_list_view_state.dart';
+import 'package:my_notes/common/database/notes_dao.dart' as NotesDAO;
 
 class NotesListBloc {
   final BehaviorSubject<NoteListViewState> _viewStateSubject = BehaviorSubject.seeded(NoteListViewState.loading);
@@ -32,20 +32,5 @@ class NotesListBloc {
 
   onTapListItemAt(int index) {
     print("On tap list item at index $index");
-  }
-}
-
-class NoteListViewState {
-  bool isEmpty;
-  bool isLoading;
-  UnmodifiableListView<NoteViewModel> notes;
-
-  NoteListViewState(this.isEmpty, this.isLoading, this.notes);
-
-  static final loading = NoteListViewState(false, true, UnmodifiableListView([]));
-  static final empty = NoteListViewState(true, false, UnmodifiableListView([]));
-
-  static NoteListViewState some(UnmodifiableListView<NoteViewModel> notes) {
-    return NoteListViewState(false, false, notes);
   }
 }
