@@ -6,7 +6,7 @@ mixin EmptyListFeedback {
       child: Text(
         "This list is empty!", 
         style: TextStyle(fontSize: 30)
-        )
+        ),
     );
   }
 }

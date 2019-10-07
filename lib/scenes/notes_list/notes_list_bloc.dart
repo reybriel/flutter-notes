@@ -13,9 +13,9 @@ class NotesListBloc {
     _requestNotes();
   }
 
-  _requestNotes() {
-    Future.delayed(Duration(seconds: 2), () {
-      _viewStateController.add(NoteListViewState.mock);
+  _requestNotes() async {
+    await Future.delayed(Duration(seconds: 2), () {
+      _viewStateController.add(NoteListViewState.empty);
     });
   }
 
