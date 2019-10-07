@@ -5,12 +5,10 @@ import 'package:my_notes/common/database/notes_dao.dart' as NotesDAO;
 import 'package:rxdart/subjects.dart';
 
 class NotesListBloc {
-  final BehaviorSubject<NoteListViewState> _viewStateSubject = BehaviorSubject();
-  Sink<NoteListViewState> get _viewStateSink => _viewStateSubject.sink;
+  final BehaviorSubject<NoteListViewState> _viewStateSubject = BehaviorSubject.seeded(NoteListViewState.loading);
   Stream<NoteListViewState> get viewState => _viewStateSubject.stream;
 
   initialize() {
-    _viewStateSink.add(NoteListViewState.loading);
     _requestNotes();
   }
 
